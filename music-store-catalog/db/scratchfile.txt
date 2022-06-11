@@ -1,0 +1,61 @@
+docker container run -d -p 3307:3306 \
+--env MYSQL_ROOT_PASSWORD=rootroot \
+--volume="/Users/lii/repos/M7-Challenge-Barnes-Lloyd/music-store-catalog/db/data":/var/lib/mysql \
+--name=music-store-catalog-db music-store-catalog-db
+
+
+docker container exec -it music-store-catalog-db bash
+
+
+--network=music-store-catalog-network
+
+
+docker run -d -p 8080:8080 --network=music-store-catalog-network --name=music-store-catalog music-store-catalog
+
+
+docker container run -d \
+-p 3001:3001 \
+--env DB_USER=root \
+--env DB_NAME=music-store-catalog-db \
+--env DB_PASSWORD=rootroot \
+--env DB_HOST=<IP ADDRESS OF THE DATABASE CONTAINER> \
+--link newsfeed-db:db \
+--name=newsfeed-app music-store-catalog
+
+
+
+
+
+docker image build -t music-store-catalog-db .
+
+docker network create music-store-catalog-network
+
+docker container run -d -p 3307:3306 \
+--env MYSQL_ROOT_PASSWORD=rootroot \
+--volume="/Users/lii/repos/M7-Challenge-Barnes-Lloyd/music-store-catalog/db/data":/var/lib/mysql \
+--network=music-store-catalog-network --name=music-store-catalog-network-db music-store-catalog-db
+
+docker run -d -p 8080:8080 --network=music-store-catalog-network --name music-store-catalog music-store-catalog-db
+
+
+JAWSDB_URL
+
+mysql://gkck2up3q56sag7w:uhj35mwalu5mmkj9@jtb9ia3h1pgevwb1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/s2syunk0a11rec9c
+
+
+
+
+
+
+
+
+
+
+docker container run -d -p 3307:3306 \
+--env MYSQL_ROOT_PASSWORD=r \
+--volume=<your path to the data directory>:/var/lib/mysql \
+--name=newsfeed-db
+
+
+
+docker image build -t music-store-catalog .
